@@ -11,7 +11,18 @@ class Docker implements Serializable{
         script.sh "docker build -t $ImageName ."
     }
     def runImage(String ImageName,Integer PortNum){
-        script.sh "docker run -d -p$PortNum:3000 docker.io/library/$ImageName"
+        script.withCredentials(
+            [
+                script.usernamePassword
+                (
+                    credentialsId: "$CredsId",
+                    passwordVariable: 'PASS',
+                    usernameVariable: 'USER'
+                )
+            ]
+        )
+        script.sh "docker tag $ImageName $script.USER/$ImageName"
+        script.sh "docker run -d -p$PortNum:3000 $script.USER/$ImageName"
     }
     def DockerPushImage(String ImageName){
         script.sh "docker push $ImageName"
