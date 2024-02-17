@@ -10,7 +10,7 @@ class Gt implements Serializable{
         script.echo "Cloning the code from $Giturl"
         script.sh "git clone $Giturl"
     }
-    def cloneGitUrlPvt(string CredsId,string UserName,string RepoName){
+    def cloneGitUrlPvt(String CredsId,String UserName,String RepoName){
         script.withCredentials(
             [
                 script.usernamePassword
