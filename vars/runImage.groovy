@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 import com.example.Docker
 
-def call(String imageName,def PortNum){
-    return new Docker(this).buildImage(imageName,PortNum)
+def call(String imageName,Integer PortNum){
+    return new Docker(this).runImage(imageName,PortNum)
 }
