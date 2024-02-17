@@ -12,7 +12,14 @@ class Docker implements Serializable{
         script.sh "docker build -t $ImageName ."
     }
     def runImage(String ImageName,Integer PortNum){
-        script.sh "docker run -d -p$PortNum:3000 $ImageName"
+        def isContainerRunning = script.sh(script: "docker ps --format '{{.Names}}' | grep -q '^$ImageName\$'", returnStatus: true) == 0
+        if(isContainerRunning){
+            script.echo "Container $ImageName is already running..."
+        }
+        else {
+            script.echo "Starting container $ImageName"
+            script.sh "docker run -d -p$PortNum:3000 $ImageName"
+        }
     }
     def DockerPushImage(String ImageName){
         script.sh "docker push $ImageName"
