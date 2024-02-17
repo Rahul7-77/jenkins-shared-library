@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 package com.example
 
-class Gt implements Serializable{
+class GT implements Serializable{
     def script
-    Gt(script){
+    GT(script){
         this.script=script
     }
     def cloneGitUrlPub(String Giturl){
