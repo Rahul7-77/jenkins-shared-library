@@ -49,7 +49,7 @@ class Docker implements Serializable{
                 )
             ]
         ) {
-            dockeruser=env.USER
+            dockeruser=script.USER
             script.sh "echo $script.PASS | docker login -u $script.USER --password-stdin"
         }
     }
