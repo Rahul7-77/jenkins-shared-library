@@ -22,7 +22,7 @@ class Docker implements Serializable{
         //         )
         //     ]
         // )
-        script.sh "docker run -d -p$PortNum:3000 $dockeruser/mydockerimages-1:$ImageName"
+        script.sh "docker run -d -p$PortNum:3000 rahul7502/mydockerimages-1:$ImageName"
     }
     def DockerPushImage(String ImageName){
         // script.withCredentials(
@@ -36,7 +36,7 @@ class Docker implements Serializable{
         //     ]
         // )
         //script.sh "docker tag $ImageName $dockeruser/$ImageName"
-        script.sh "docker push $dockeruser/mydockerimages-1:$ImageName"
+        script.sh "docker push rahul7502/mydockerimages-1:$ImageName"
     }
     def DockerLogin(String CredsId){
         script.withCredentials(
