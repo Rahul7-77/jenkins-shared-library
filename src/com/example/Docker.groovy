@@ -13,7 +13,7 @@ class Docker implements Serializable{
     }
     def runImage(String ImageName,Integer PortNum){
         def isContainerRunning = script.sh(script: "docker ps --format '{{.Names}}' | grep -q '^$ImageName\$'", returnStatus: true) == 0
-        if(isContainerRunning){
+        if(!isContainerRunning){
             script.echo "Container $ImageName is already running..."
         }
         else {
