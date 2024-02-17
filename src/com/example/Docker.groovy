@@ -3,6 +3,7 @@ package com.example
 
 class Docker implements Serializable{
     def script
+    def dockeruser
     Docker(script){
         this.script = script
     }
@@ -21,7 +22,7 @@ class Docker implements Serializable{
                 )
             ]
         )
-        script.sh "docker run -d -p$PortNum:3000 $script.USER/$ImageName"
+        script.sh "docker run -d -p$PortNum:3000 $dockeruser/$ImageName"
     }
     def DockerPushImage(String ImageName){
         script.withCredentials(
@@ -34,8 +35,8 @@ class Docker implements Serializable{
                 )
             ]
         )
-        script.sh "docker tag $ImageName $script.USER/$ImageName"
-        script.sh "docker push $script.USER/$ImageName"
+        script.sh "docker tag $ImageName $dockeruser/$ImageName"
+        script.sh "docker push $dockeruser/$ImageName"
     }
     def DockerLogin(String CredsId){
         script.withCredentials(
@@ -48,6 +49,7 @@ class Docker implements Serializable{
                 )
             ]
         ) {
+            dockeruser=env.USER
             script.sh "echo $script.PASS | docker login -u $script.USER --password-stdin"
         }
     }
