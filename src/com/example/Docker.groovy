@@ -10,7 +10,7 @@ class Docker implements Serializable{
         script.echo "Building docker image with name $ImageName"
         script.sh "docker build -t $ImageName ."
     }
-    def runImage(String ImageName,def PortNum){
+    def runImage(String ImageName,Integer PortNum){
         script.sh "docker run -d -p$PortNum:3000 $ImageName"
     }
     def DockerPushImage(String ImageName){
