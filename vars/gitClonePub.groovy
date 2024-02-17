@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-import com.example.Gt
+import com.example.GT
 
 def call(String branch = 'main', boolean changelog = false, boolean poll = false, String url) {
     // Clone the Git repository with specified configuration options
