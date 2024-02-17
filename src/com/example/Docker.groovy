@@ -12,31 +12,9 @@ class Docker implements Serializable{
         script.sh "docker build -t $ImageName ."
     }
     def runImage(String ImageName,Integer PortNum){
-        // script.withCredentials(
-        //     [
-        //         script.usernamePassword
-        //         (
-        //             credentialsId: "$CredsId",
-        //             passwordVariable: 'PASS',
-        //             usernameVariable: 'USER'
-        //         )
-        //     ]
-        // )
         script.sh "docker run -d -p$PortNum:3000 $ImageName"
     }
     def DockerPushImage(String ImageName){
-        // script.withCredentials(
-        //     [
-        //         script.usernamePassword
-        //         (
-        //             credentialsId: "$CredsId",
-        //             passwordVariable: 'PASS',
-        //             usernameVariable: 'USER'
-        //         )
-        //     ]
-        // )
-        //script.sh "docker tag $ImageName $dockeruser/$ImageName"
-        // script.sh "docker push rahul7502/mydockerimages-1:$ImageName"
         script.sh "docker push $ImageName"
     }
     def DockerLogin(String CredsId){
