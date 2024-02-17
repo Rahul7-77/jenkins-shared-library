@@ -21,7 +21,7 @@ class Docker implements Serializable{
             [
                 script.usernamePassword
                 (
-                    credentialsId: $CredsId,
+                    credentialsId: "$CredsId",
                     passwordVariable: 'PASS',
                     usernameVariable: 'USER'
                 )
