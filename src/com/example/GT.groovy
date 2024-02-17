@@ -15,8 +15,8 @@ class Gt implements Serializable{
             [
                 script.usernamePassword
                 (
-                    credentialsId: $CredsId
-                    passwordVariable:'PASS'
+                    credentialsId: "$CredsId",
+                    passwordVariable:'PASS',
                     usernameVariable:'USER'
                 )
             ]
